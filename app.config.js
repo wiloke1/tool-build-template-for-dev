@@ -9,9 +9,9 @@ const appConfig = {
 
 	progress: {
 		all: "#41a5fa",
-		inprogress: "#bc74ff",
-		codereview: "#ff7474",
-		designreview: "#F2D600",
+		working: "#F2D600",
+		review: "#bc74ff",
+		reject: "#ff7474",
 		complete: "#61BD4F"
 	},
 
