@@ -1,0 +1,48 @@
+code[class*="language-"], pre[class*="language-"] { color: #ddddd3; background: none; text-shadow: 0 1px rgba(0, 0, 0, 0.3); font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; line-height: 1.5; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; -webkit-hyphens: none; -moz-hyphens: none; -ms-hyphens: none; hyphens: none; } pre[class*="language-"] { padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0.3em; } :not(pre) > code[class*="language-"], pre[class*="language-"] { background: #292d3e; } :not(pre) > code[class*="language-"] { padding: .1em; border-radius: .3em; white-space: normal; } .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #677098; font-style: italic } .token.punctuation { color: #ddddd3; } .namespace { opacity: .7; } .token.tag, .token.constant, .token.symbol, .token.deleted { color: #ff5572; } .token.boolean, .token.number { color: #c792ea; } .token.attr-name, .token.selector { color: #ffcb6b } .token.string, .token.char, .token.builtin, .token.inserted { color: #c3e88d; } .token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string, .token.variable { color: #ddddd3; } .token.atrule, .token.attr-value, .token.function { color: #61aeee; } .token.keyword { color: #c792ea; } .token.regex, .token.important { color: #ff5572; } .token.important, .token.bold { font-weight: bold; } .token.italic { font-style: italic; } .token.entity { cursor: help; } pre.line-numbers { position: relative; padding-left: 3.8em; counter-reset: linenumber; } pre.line-numbers > code { position: relative; } .line-numbers .line-numbers-rows { position: absolute; pointer-events: none; top: 0; font-size: 100%; left: -3.8em; width: 3em; /* works for line-numbers below 1000 lines */ letter-spacing: -1px; border-right: 1px solid #999; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } .line-numbers-rows > span { pointer-events: none; display: block; counter-increment: linenumber; } .line-numbers-rows > span:before { content: counter(linenumber); color: #999; display: block; padding-right: 0.8em; text-align: right; }
+
+/*Custom*/
+.line-numbers .line-numbers-rows {
+	left: -5em;
+	opacity: 0.5;
+}
+.toolbar-item {
+	background-color: rgba(255,255,255,0.2);
+	color: #eee;
+}
+.line-numbers .language-scss {
+	color: #ffcb6b;
+}
+.token.property {
+	color: #80cbc4;
+}
+
+[href="data.pug"] ~ .wil-text-content-core .token.tag {
+	color: #c3e88d;
+}
+[href="data.pug"] ~ .wil-text-content-core .token.punctuation {
+	color: #61aeee;
+}
+/*.line-numbers span::-moz-selection {
+	background-color: transparent;
+}
+.line-numbers span::selection {
+	background-color: transparent;
+}*/
+
+.line-numbers span::-moz-selection,
+.line-numbers code::-moz-selection {
+    color: inherit;
+    background-color: rgba(255,255,255,0.15);
+}
+.line-numbers span::selection,
+.line-numbers code::selection {
+    color: inherit;
+    background-color: rgba(255,255,255,0.15);
+}
+.line-numbers .line-numbers-rows {
+	border: 0 !important;
+	opacity: 1 !important;
+}
+.line-numbers-rows > span:before {
+	color: #677098 !important;
+}

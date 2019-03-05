@@ -1,0 +1,498 @@
+
+block beforeLink
+	-
+		var themes = 'palenight';
+		var appConfig = require(__dirname.replace('webpack.config', '') + 'app.config.js');
+		var dataFile = appConfig.folders.path + '/' + appConfig.folders.content + '/' + activate + '/' + appConfig.data;
+
+	meta(http-equiv="refresh", content="5000")
+	style(type="text/css")
+		//- theme prismjs: default, okaidia, twilight, atom, palenight
+		if (themes == 'default')
+			include assets/prism-themes/default.css
+		if (themes == 'okaidia')
+			include assets/prism-themes/okaidia.css
+		if (themes == 'twilight')
+			include assets/prism-themes/twilight.css
+		if (themes == 'atom')
+			include assets/prism-themes/atom.css
+		if (themes == 'palenight')
+			include assets/prism-themes/palenight.css
+		//- style
+		include assets/style.css
+
+block beforePage
+	div.app-check-responsive
+		div.app-check-responsive__full(data-device="100%")
+		div.app-check-responsive__1440(data-device="1440px")
+		div.app-check-responsive__1024(data-device="1024px")
+		div.app-check-responsive__768(data-device="768px")
+		div.app-check-responsive__425(data-device="425px")
+		div.app-check-responsive__375(data-device="375px")
+		div.app-check-responsive__320(data-full="full", data-1440="1440", data-1024="1024", data-768="768", data-425="425", data-375="375", data-320="320", data-device="320px")
+	a(href="check-responsive", class="link-check-responsive")
+		.
+			
+			<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+			width="30px" height="30px" viewBox="0 0 225.000000 225.000000"
+			preserveAspectRatio="xMidYMid meet">
+
+			<g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)"
+			fill="#fff" stroke="none">
+			<path d="M358 1659 c-16 -9 -18 -31 -18 -235 l0 -225 38 3 37 3 3 193 2 192
+			578 -2 577 -3 3 -57 3 -58 39 0 40 0 0 83 c0 69 -3 87 -18 100 -17 15 -76 17
+			-643 17 -405 -1 -630 -4 -641 -11z"/>
+			<path d="M1450 1400 c-19 -19 -20 -33 -20 -385 0 -352 1 -366 20 -385 19 -19
+			33 -20 278 -20 217 0 261 2 280 16 l22 15 0 374 0 374 -22 15 c-19 14 -63 16
+			-280 16 -245 0 -259 -1 -278 -20z m540 -350 l0 -310 -260 0 -260 0 0 310 0
+			310 260 0 260 0 0 -310z m-325 -360 c8 -26 -1 -40 -26 -40 -22 0 -34 22 -25
+			45 8 22 44 18 51 -5z m90 -10 c0 -18 -6 -26 -21 -28 -26 -4 -40 24 -23 45 18
+			21 44 11 44 -17z m93 2 c4 -28 -24 -40 -45 -19 -14 13 -14 19 -3 32 18 22 44
+			15 48 -13z"/>
+			<path d="M250 1147 l-25 -13 -3 -263 c-2 -186 1 -268 9 -277 15 -19 269 -20
+			287 -2 9 9 12 84 12 274 0 317 12 294 -150 294 -64 0 -115 -5 -130 -13z m143
+			-54 c-7 -2 -21 -2 -30 0 -10 3 -4 5 12 5 17 0 24 -2 18 -5z m107 -233 l0 -190
+			-125 0 -125 0 0 190 0 190 125 0 125 0 0 -190z m-107 -225 c7 -17 -8 -29 -28
+			-21 -17 6 -9 36 10 36 7 0 15 -7 18 -15z"/>
+			<path d="M584 947 c-3 -8 -4 -45 -2 -83 l3 -69 398 -3 397 -2 0 85 0 85 -395
+			0 c-323 0 -397 -2 -401 -13z m440 -59 c8 -14 7 -21 -6 -34 -30 -30 -75 9 -48
+			42 16 18 39 15 54 -8z"/>
+			<path d="M854 711 c-4 -23 -17 -49 -30 -62 -13 -12 -24 -26 -24 -31 0 -4 90
+			-8 200 -8 110 0 200 4 200 9 0 5 -11 16 -24 25 -16 10 -28 30 -33 58 l-9 43
+			-137 3 -137 3 -6 -40z"/>
+			</g>
+			</svg>
+
+block script
+	script(type="text/javascript")
+		include assets/cookie.js
+		include assets/script.js
+		include assets/prism.js
+
+
+
+
+//- Check work
+mixin checkWork
+	-
+		var appConfig = require(__dirname.replace('webpack.config', '') + '/app.config.js');
+		function checkWork(authorFolder) {
+			var dateWork = '';
+			authorFolder.forEach((item) => {
+
+				if ((item.path.indexOf('.pug') !== -1) && (item.path.indexOf('data.pug') == -1) && (item.path.indexOf('demo.pug') == -1) && (item.path.indexOf('cssmodule.pug') == -1)) {
+					dateWork += item.path.match(/.*(\\|\/)/g).join('').replace(/\\/g, '/') + ', ';
+				}
+
+				if (item.submenu) {
+					dateWork += checkWork(item.submenu);
+				}
+			});
+			return dateWork;
+		}
+		var activate = process.env.activate ? process.env.activate : '_blank';
+		var entryPath = appConfig.folders.path + '/' + appConfig.folders.content + '/' + activate + '/' + appConfig.entry.path;
+		var isProd = process.env.NODE_ENV === 'production';
+		var isProdMinify = process.env.NODE_ENV === 'productionMinify';
+		var patternActivate = fs.readdirSync(entryPath + '/_pattern');
+		const menuCore = patternActivate.map(file => {
+			if (file !== ".DS_Store") {
+				const fileDir = `${entryPath}/_pattern/${file}`;
+				return directoryTree(fileDir);
+			}
+		}).filter(file => file);
+	each val in menuCore
+		if (val.text !== 'general')
+			table.wil-core-table.wil-core-checkList
+				thead
+					tr
+						th
+						th= val.path.replace(/.*\//g, '')
+						th Created
+						th
+							|Status
+							span.table-toggle
+				tbody
+					if (checkWork(val.submenu) != '')
+						-
+							var patternArr = [];
+							checkWork(val.submenu).match(/.*\//g).join('').split(', ').forEach((filename) => {
+								var birthTimePattern = FS.statSync(filename).birthtime.toLocaleDateString('en-US', {
+									day : 'numeric',
+									month : 'numeric', // short
+									year : 'numeric',
+									hour: 'numeric',
+									minute: 'numeric'
+								});
+								var getTime = FS.statSync(filename).birthtime.getTime();
+								if ( fs.existsSync(dataFile + '/changelog/' + encode(filename) + '.json') == false ) {
+									fs.writeFileSync(
+										dataFile + '/changelog/' + encode(filename) + '.json',
+										'{"filename":"' + filename + '","birthtime": "' + birthTimePattern + '","gettime": "' + getTime + '"}'
+									);
+								}
+								var readFileChangeLog = fs.readFileSync(dataFile + '/changelog/' + encode(filename) + '.json', 'utf-8');
+								patternArr.push(JSON.parse(readFileChangeLog));
+							});
+							patternArr.sort((a, b) => {
+								return new Date(b.birthtime).getTime() - new Date(a.birthtime).getTime()
+							})
+							var numberPattern = 0;
+						each items in patternArr
+							- numberPattern++;
+							tr
+								td= numberPattern
+								td
+									a(
+										href='#',
+										data-folder=items.filename.slice(0, -1).split('/')
+									)= items.filename.replace(/.*_pattern\//g, '')
+								td= items.birthtime
+								td(class='status', data-dir=items.filename)
+
+
+block content
+	
+	//- check demo and css module
+	include /wiloke-template/wilEstate/app/pug/docs-includes/docs-includes.pug
+
+
+	div(class=`wil-main-core ${themes}`)
+
+		include navigation-core
+
+		div.wil-content-core
+
+
+			+section
+				+row
+			
+					+col
+						h1.wil-text-center Build Template
+
+
+			-
+				var projectFolder = __dirname.replace('webpack.config', '');
+				var appConfig = require(projectFolder + '/app.config.js');
+				var activate = process.env.activate ? process.env.activate : '_blank';
+				var glob = require('glob');
+				var pagePugArr = glob.sync(projectFolder + appConfig.folders.path + '/' + appConfig.folders.content + '/' + activate + '/' + appConfig.entry.path + '/*.pug');
+				var pageHtmlArr = [];
+				pagePugArr.forEach((page) => {
+					pageHtmlArr.push(page.replace(/.*\/|.pug/g, ''))
+				});
+			h5(style="font-weight: 700;border-bottom: 2px solid #eee;color: #41a5fa;padding:10px 0") Template activate: #{activate}
+			table.wil-core-table
+				thead
+					tr
+						th
+						th Pages
+						th Created
+						th
+							span.table-toggle
+				tbody
+					-
+						var pagesArr = [];
+						pageHtmlArr.forEach((filename) => {
+							var filenameDir = appConfig.folders.path + '/' + appConfig.folders.content + '/' + activate + '/' + appConfig.entry.path + '/' + filename;
+							var birthTimePages = FS.statSync(filenameDir + '.pug').birthtime;
+							var birthTimePagesLocaleDate = birthTimePages.toLocaleDateString('en-US', {
+								day : 'numeric',
+								month : 'numeric', // short
+								year : 'numeric',
+								hour: 'numeric',
+								minute: 'numeric'
+							});
+							if ( fs.existsSync(dataFile + '/changelog/' + encode(filenameDir) + '.json') == false ) {
+								fs.writeFileSync(
+									dataFile + '/changelog/' + encode(filenameDir) + '.json',
+									'{"filename":"' + filenameDir + '","birthtime": "' + birthTimePagesLocaleDate + '"}'
+								);
+							}
+							var readFileChangeLog = fs.readFileSync(dataFile + '/changelog/' + encode(filenameDir) + '.json', 'utf-8');
+							pagesArr.push(JSON.parse(readFileChangeLog));
+						});
+						pagesArr.sort((a, b) => {
+							return new Date(b.birthtime).getTime() - new Date(a.birthtime).getTime()
+						})
+						var numberPages = 0
+					each items in pagesArr
+						- numberPages++;
+						if (items.filename.indexOf('index') === -1)
+							tr
+								td= numberPages
+								td
+									a(
+										href=items.filename.replace(/.*\//g, '') + '.html',
+										target='_blank'
+									)= items.filename.replace(/.*\//g, '') + '.html'
+								td= items.birthtime
+								td
+
+
+			h5(style="font-weight: 700;border-bottom: 2px solid #eee;color: #41a5fa;padding:10px 0") Patern
+			+checkWork
+
+			h2.wil-page-header Default args module example
+			pre.line-numbers
+				code.language-pug.
+					+post({
+						addClass: 'demo',
+						modifier: 'test',
+						id: 'post-id',
+						align: 'left',
+						skin: 'dark',
+						css: {
+							'background-color': 'red',
+							'color': 'blue'
+						},
+						attr: {
+							'id': 'test',
+							'data-test': 'test',
+							...
+						},
+						animate: 'fadeInUp',
+						animate: {
+							name: 'fadeInUp',
+							duration: '0.4s',
+							delay: '0.1s',
+							offset: '100'
+						},
+						loop: {
+							data: dataTest,
+							items: 3,
+							wrap: 'col-md-4',
+						},
+						loop: {
+							data: dataTest,
+							items: 3,
+							wrap: 'col-md-4'
+						},
+						loop: {
+							data: dataTest,
+							items: 3,
+							children: true
+						},
+
+
+						src: 'for tag img',
+						alt: 'for tag img',
+						href: 'for tag a',
+						target: 'for tag a',
+						type: 'for input, button',
+					})
+
+				
+					
+
+			include doc-bootstrap
+
+
+			//- +wil-grid-scss({
+			//- 	modifier: 'grid',
+			//- 	cols: [1, 2, 2, 4],
+			//- 	gap: 30,
+			//- 	filter: [
+			//- 		{
+			//- 			itemfilter: '*',
+			//- 			text: 'All'
+			//- 		},
+			//- 		{
+			//- 			itemfilter: 'cat1',
+			//- 			text: 'cat1'
+			//- 		},
+			//- 		{
+			//- 			itemfilter: 'cat2',
+			//- 			text: 'cat2'
+			//- 		},
+			//- 		{
+			//- 			itemfilter: 'cat3',
+			//- 			text: 'cat3'
+			//- 		},
+			//- 		{
+			//- 			itemfilter: 'cat4',
+			//- 			text: 'cat4'
+			//- 		},
+			//- 	]
+			//- })
+			//- 	include /general/molecules/product-01/data.pug
+			//- 	//- Args: sliderRandom, img, sale, new, hot, name, curency, price
+			//- 	+product-01({
+			//- 		loop: {
+			//- 			data: dataProduct,
+			//- 			wrap: {
+			//- 				addClass: 'grid-item',
+			//- 				getValueData: 'category',
+			//- 				layouts: ['large', 'wide', 'normal', 'normal', 'normal', 'normal', 'large', 'normal', 'normal']
+			//- 			},
+			//- 			items: 9
+			//- 		}
+			//- 	})
+
+			h2.wil-page-header Grid masonry
+			pre.line-numbers
+				code.language-pug.
+					+wil-grid-scss({
+						modifier: 'grid',			//- 2 modifier: grid, masonry
+						cols: [1, 2, 2, 4],
+						gap: 30,					//- gap 5, 10, 15, 20, 25, 30, 35, 40
+						filter: [
+							{
+								itemfilter: '*',
+								text: 'All'
+							},
+							{
+								itemfilter: 'cat1',
+								text: 'cat1'
+							},
+							{
+								itemfilter: 'cat2',
+								text: 'cat2'
+							}
+						]
+					})
+						include /general/molecules/product-01/data.pug
+						//- Args: sliderRandom, img, sale, new, hot, name, curency, price
+						+product-01({
+							loop: {
+								data: dataProduct,
+								wrap: {
+									addClass: 'grid-item',
+									getValueData: 'category',
+									layouts: ['large', 'wide', 'normal', 'normal', 'normal', 'normal', 'large', 'normal', 'normal']
+								},
+								items: 9
+							}
+						})
+
+			//- -
+			//- 	dataGridDemo = [
+			//- 		{
+			//- 			icon: 'fa fa-google-plus',
+			//- 			title: 'title 1',
+			//- 			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi perferendis nostrum eligendi reprehenderit.',
+			//- 			categories: 'uncategorized'
+			//- 		},
+			//- 		{
+			//- 			icon: 'fa fa-google-plus',
+			//- 			title: 'title 2',
+			//- 			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi perferendis nostrum eligendi reprehenderit.',
+			//- 			categories: 'uncategorized'
+			//- 		},
+			//- 		{
+			//- 			icon: 'fa fa-google-plus',
+			//- 			title: 'title 3',
+			//- 			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi perferendis nostrum eligendi reprehenderit.',
+			//- 			categories: 'music'
+			//- 		},
+			//- 		{
+			//- 			icon: 'fa fa-google-plus',
+			//- 			title: 'title 3',
+			//- 			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi perferendis nostrum eligendi reprehenderit.',
+			//- 			categories: 'music'
+			//- 		},
+			//- 		{
+			//- 			icon: 'fa fa-google-plus',
+			//- 			title: 'title 3',
+			//- 			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi perferendis nostrum eligendi reprehenderit.',
+			//- 			categories: 'music'
+			//- 		},
+			//- 		{
+			//- 			icon: 'fa fa-google-plus',
+			//- 			title: 'title 3',
+			//- 			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi perferendis nostrum eligendi reprehenderit.',
+			//- 			categories: 'music'
+			//- 		},
+			//- 		{
+			//- 			icon: 'fa fa-google-plus',
+			//- 			title: 'title 3',
+			//- 			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi perferendis nostrum eligendi reprehenderit.',
+			//- 			categories: 'music'
+			//- 		},
+			//- 	]
+
+
+
+			//- //- +wil-grid({
+			//- //- 	options: {
+			//- //- 		style: 'creative',
+			//- //- 		devices: {
+			//- //- 			320: {
+			//- //- 				vertical: 10,
+			//- //- 				horizontal: 10,
+			//- //- 				column: 4,
+			//- //- 				items: [
+			//- //- 					{width: 2, height: 2},
+			//- //- 					{width: 1, height: 1},
+			//- //- 					{width: 1, height: 1},
+			//- //- 					{width: 2, height: 1},
+			//- //- 					{width: 2, height: 1},
+			//- //- 					{width: 1, height: 1},
+			//- //- 					{width: 1, height: 1},
+			//- //- 				]
+			//- //- 			}
+			//- //- 		}
+			//- //- 	},
+			//- //- 	filter: [
+			//- //- 		{
+			//- //- 			categories: '*',
+			//- //- 			text: 'All'
+			//- //- 		},
+			//- //- 		{
+			//- //- 			categories: 'uncategorized',
+			//- //- 			text: 'uncategorized'
+			//- //- 		},
+			//- //- 		{
+			//- //- 			categories: 'music',
+			//- //- 			text: 'music'
+			//- //- 		},
+			//- //- 	]
+			//- //- })
+			//- //- 	+iconbox({
+			//- //- 		loop: {
+			//- //- 			data: dataGridDemo,
+			//- //- 			wrap: {
+			//- //- 				addClass: 'grid-item',
+			//- //- 				getValueData: 'categories'
+			//- //- 			}
+			//- //- 		}
+			//- //- 	})
+
+			//- //- pre.line-numbers
+			//- //- 	code.language-pug.
+			//- //- 		+wil-grid({
+			//- //- 			options: {
+			//- //- 				style: 'creative',
+			//- //- 				devices: {
+			//- //- 					320: {
+			//- //- 						vertical: 10,
+			//- //- 						horizontal: 10,
+			//- //- 						column: 4,
+			//- //- 						items: [
+			//- //- 							{width: 2, height: 2},
+			//- //- 							{width: 1, height: 1},
+			//- //- 						]
+			//- //- 					}
+			//- //- 				}
+			//- //- 			},
+			//- //- 			filter: [
+			//- //- 				{
+			//- //- 					categories: '*',
+			//- //- 					text: 'All'
+			//- //- 				},
+			//- //- 				{
+			//- //- 					categories: 'uncategorized',
+			//- //- 					text: 'uncategorized'
+			//- //- 				},
+			//- //- 			]
+			//- //- 		})
+			//- //- 			//- Demo iconbox item loop
+			//- //- 			+iconbox({
+			//- //- 				loop: {
+			//- //- 					data: dataGridDemo,
+			//- //- 					wrap: {
+			//- //- 						addClass: 'grid-item',
+			//- //- 						getValueData: 'categories'
+			//- //- 					}
+			//- //- 				}
+			//- //- 			})

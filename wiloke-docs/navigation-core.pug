@@ -1,0 +1,215 @@
+-
+	var appConfig = require(__dirname.replace('webpack.config', '') + '/app.config.js');
+			
+	function containsAny(str, substrings) {
+		for (var i = 0; i != substrings.length; i++) {
+			var substring = substrings[i];
+			if (str.indexOf(substring) !== - 1) {
+				return substring;
+			}
+		}
+		return null; 
+	}
+
+	menuCore = [];
+
+	var activate = process.env.activate ? process.env.activate : '_blank';
+	var entryPath = appConfig.folders.path + '/' + appConfig.folders.content + '/' + activate + '/' + appConfig.entry.path;
+	var isProd = process.env.NODE_ENV === 'production';
+	var isProdMinify = process.env.NODE_ENV === 'productionMinify';
+
+	var patternActivate = fs.readdirSync(entryPath + '/_pattern');
+	var patternCore = fs.readdirSync(`${appConfig.folders.path}/${appConfig.folders.core}/_pattern`);
+	patternCore.forEach(file => {
+		let fileDir = `${appConfig.folders.path}/${appConfig.folders.core}/_pattern/${file}`;
+		menuCore.push(directoryTree(fileDir));
+	});
+	patternActivate.forEach(file => {
+		let fileDir = `${entryPath}/_pattern/${file}`;
+		menuCore.push(directoryTree(fileDir));
+	});
+	
+	var progress = appConfig.progress;
+
+
+
+
+mixin core_check_filename(fileName, path, addClass)
+	-
+		var file = FS.readFileSync(path, 'utf-8');
+	div.wil-text-content-core
+		|<!--checkload
+		|
+		div.inner
+			pre.line-numbers(class=addClass || '')
+				code(class='language-' + fileName)=file
+		|
+		|endcheckload-->
+
+
+mixin print_menuCore(path, text, subtext, submenu, opts)
+
+	-
+		var classLink = 'wil-menu-link-core all';
+		if ((path.indexOf('.pug') !== -1) && (path.indexOf('demo.pug') == -1) && (path.indexOf('cssmodule.pug') == -1)) {
+			var today = new Date().toLocaleDateString('en-US', {
+				day : 'numeric',
+				month : 'short',
+				year : 'numeric'
+			});
+			var dateCheck = today;
+			var fileDataInfo = path.match(/.*\\|.*\//g).join('').replace(/\\|\//g, '_-_-_') + 'info';
+			if ( FS.existsSync(appConfig.folders.data + '/info/' + encode(fileDataInfo.replace(new RegExp(appConfig.folders.path + '_-_-_' + appConfig.folders.core + '_-_-_', 'g'), '')) + '.txt') ) {
+				var fileTxtContents = FS.readFileSync(appConfig.folders.data + '/info/' + encode(fileDataInfo.replace(new RegExp(appConfig.folders.path + '_-_-_' + appConfig.folders.core + '_-_-_', 'g'), '')) + '.txt', 'utf-8');
+				if (fileTxtContents.indexOf(dateCheck) !== -1) {
+					classLink = 'wil-menu-link-core all new'
+				}
+			}
+		}
+	//- else
+	a(href=text, class=classLink, data-dir=path.replace(/\\/g, '/'))
+		span= text
+		
+	if (submenu)
+		- var submenuClass = opts.submenu.class ? opts.submenu.class : 'sub-menu';
+		+menu_unorderedCore(submenu, submenuClass, opts)
+	
+
+
+	if (path.indexOf('demo.pug') !== -1)
+		-
+			var file = FS.readFileSync(path, 'utf-8').replace(/<div.*<\/div>/g, '');
+		div.wil-text-content-core
+			
+			div.inner
+				input.wil-core-range(type="range", min="0", max="20", value="0")
+				|<!--checkload
+				|
+
+				//- Demo
+				div.wil-text-content-core--demo
+					+include(path.replace(/\\/g, '/').replace(appConfig.folders.path, ''))
+				//- Code
+				pre.line-numbers
+					code(class='language-pug')=file
+				|
+				|endcheckload-->
+
+				div.wil-text-content-core--footer
+
+					form(action="/api/add-comment", method="get" onsubmit="wilCoreComment(event)")
+						|<!--checkload
+						|
+						div.wil-core-check-list
+							- var progressLabel = '{' + JSON.stringify(progress).match(/,.*/g).join('').match(/".*/g).join('')
+							- for ( var label in JSON.parse(progressLabel) )
+								label
+									if ( label == Object.keys(JSON.parse(progressLabel))[0] )
+										input(type="radio", name="checkwork" value=`["${label}", "${JSON.parse(progressLabel)[Object.keys(JSON.parse(progressLabel))[0]]}"]`, checked="checked")
+									else
+										input(type="radio", name="checkwork" value=`["${label}", "${JSON.parse(progressLabel)[label]}"]`)
+									div.wil-core-label-icon: span(style=`background-color:${JSON.parse(progressLabel)[label]}`)
+									span(style=`color:${JSON.parse(progressLabel)[label]}`)= label
+
+						h3.wil-core-commenttitle Comments
+						input(type="text", placeholder="Name", name="author")
+						textarea(name="content", placeholder="Message")
+						button(type="submit") Comment
+						pre(style="margin: 20px 0 0"): code Link: [[http://google.com]]
+						pre(style="margin: 0"): code Emoji: XD, :D, :'(, :P, <3, :O, :(, 8), 8(, :*, :poop:, :3, (Y)
+						input(type="hidden", name="filename", value=encode(PATH.dirname(path).replace(/\\|\//g, '_-_-_').replace(new RegExp(appConfig.folders.path + '_-_-_' + appConfig.folders.core + '_-_-_', 'g'), '')))
+						|
+						|endcheckload-->
+						
+						img(class="initComment" data-filename=encode(PATH.dirname(path).replace(/\\|\//g, '_-_-_').replace(new RegExp(appConfig.folders.path + '_-_-_' + appConfig.folders.core + '_-_-_', 'g'), ''))  src="http://via.placeholder.com/1x1" data-url="/api/get-comment")
+						ul.wil-core-commentlist
+							
+			
+
+	if ((path.indexOf('.pug') !== -1) && (path.indexOf('demo.pug') === -1))
+		+core_check_filename('pug', path, 'prism-full-height')
+
+	if (path.indexOf('.scss') !== -1)
+		+core_check_filename('scss', path, 'prism-full-height')
+
+	if (path.indexOf('.sass') !== -1)
+		+core_check_filename('sass', path, 'prism-full-height')
+
+	if (path.indexOf('.js') !== -1)
+		+core_check_filename('javascript', path, 'prism-full-height')
+
+	if (path.indexOf('.css') !== -1)
+		+core_check_filename('css', path, 'prism-full-height')
+
+
+
+//- List
+mixin menu_listCore(path, text, subtext, submenu, opts)
+	-
+		var parentClass = opts.submenu.parentClass ? opts.submenu.parentClass : 'menu-item-has-children',
+			currentParentClass = opts.currentParentClass ? opts.currentParentClass : 'current-menu-parent',
+			currentClass = opts.currentClass ? opts.currentClass : 'current-menu-item';
+
+		if (submenu && config.title === text) {
+			liClass = parentClass + ' ' + currentParentClass
+		} else if (config.title === text) {
+			liClass = currentClass
+		} else if (submenu) {
+			liClass = parentClass
+		} else {
+			liClass = null
+		}
+
+
+	li(class=liClass + ' CORE_' + text)
+		+print_menuCore(path, text, subtext, submenu, opts)
+
+//- Unordered
+mixin menu_unorderedCore(data, addClass, opts)
+	ul(class=addClass)
+		each val, index in data
+			+menu_listCore(val.path, val.text, val.subtext, val.submenu, opts)
+			if index >= data.length
+				- break
+
+//- Create menu
+mixin menuCore(classNav, opts)
+	-
+		var _classNav = classNav;
+		if (classNav.indexOf('.') > -1) {
+			_classNav = classNav.split('.')[1];
+		}
+		var menuClass = opts.menuClass ? opts.menuClass : 'wil-menu-list';
+	|
+	| <!-- #{_classNav} -->
+	nav(class=_classNav)&attributes(opts.attr)&attributes(attributes)
+		|
+		| <!-- #{opts.menuClass} -->
+		+menu_unorderedCore(opts.data, menuClass, opts)
+		| <!-- #{opts.menuClass} -->
+		|
+		if block
+			block
+	| <!-- End / #{_classNav} -->
+	|
+
+
+header.wil-header-core(data-progress=progress)
+	.wil-core-label
+		.wil-core-tb
+			- for (var item in progress)
+				.wil-core-tb-cell
+					a(href='#', data-filter=item, style=`color: ${progress[item]}`)= item
+
+	.wil-core-loader
+	
+	+menuCore('.navigation-core', {
+		menuClass: 'wil-menu-core',
+		data: menuCore,
+		submenu: {
+			class: 'sub-menu',
+			parentClass: 'has-children'
+		}
+	})
+	
+

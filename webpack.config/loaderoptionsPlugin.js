@@ -1,0 +1,1 @@
+var webpack=require("webpack"),path=require("path"),autoprefixer=require("autoprefixer");module.exports=new webpack.LoaderOptionsPlugin({minimize:!1,debug:!0,options:{postcss:[autoprefixer({browsers:["last 2 version","Explorer \x3e\x3d 10","Android \x3e\x3d 4"]})],sassLoader:{includePaths:[path.resolve(__dirname,"node_modules/sanitize.css/")]}}});

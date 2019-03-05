@@ -1,0 +1,55 @@
++row
+
+	+col
+		h2.wil-page-header Bootstrap columns
+			//- +wil-btn('a', {
+			//- 	href: 'http://getbootstrap.com/css',
+			//- 	text: 'Grid bootstrap v3.3.7',
+			//- 	modifier: ['round', 'xs'],
+			//- 	target: '_blank'
+			//- })
+	
+	pre.line-numbers
+		code.language-pug.
+			+section({
+				container: true  //- boolean | Default: true
+			})
+				+row({
+					gap: 40  //- number, string
+				})
+					+col({
+						cols: [0,0,4,3],  //- string, array
+						offsets: [0,0,4,3],  //- string, array
+						gap: 40  //- number, string
+						...
+					})
+	
+			===================================================================
+			
+			//- Overlay enable
+			+section({
+				overlay: true  //- Boolean or object css. Example: overlay: { 'background-color': 'red' }
+				...
+			})
+				+row
+					+col  //- Default col-xs-12
+	
+			===================================================================
+
+			//- Css for section and gap column
+			+section({
+				css: {
+					'background-color': '#20decf'
+					...
+				}
+				...
+			})
+				+row({
+					gap: 0  //- boolean, string
+				})
+					+col({
+						 gap: 0  //- boolean, string
+					})
+	
+
+

@@ -1,0 +1,93 @@
+-
+	dataLoop = [
+		{
+			icon: 'fa fa-facebook',
+			title: 'title 1',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi perferendis nostrum eligendi reprehenderit.',
+			categories: 'uncategorized'
+		},
+		{
+			icon: 'fa fa-twitter',
+			title: 'title 2',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi perferendis nostrum eligendi reprehenderit.',
+			categories: 'uncategorized'
+		},
+		{
+			icon: 'fa fa-google-plus',
+			title: 'title 3',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi perferendis nostrum eligendi reprehenderit.',
+			categories: 'music'
+		}
+	]
+
+
++row
+	+col
+		h4.wil-page-header Element loop demo
+		
+		h6 1. Loop 2 items
+
+		+iconbox({
+			loop: {
+				data: dataLoop,
+				items: 2
+			}
+		})
+		.
+			<div class="wil-styleguide-box">
+				<div class="wil-styleguide-box__body"><span class="wil-mixin-copy" data-tooltip="Copy to clipboard">Copy</span>
+					<textarea class="wil-style-textarea">+iconbox({"breakline""tab"loop: {"breakline""tab""tab"data: dataLoop,"breakline""tab""tab"items: 2"breakline""tab"}"breakline"})</textarea>
+					<span class="wil-mixin-name">+iconbox</span><span>({</span>
+					<div class="wil-mixin-box"><span class="wil-mixin-key">loop</span><span>: {</span>
+						<div class="wil-mixin-box"><span class="wil-mixin-key">data</span><span>: </span><span class="wil-mixin-val">dataIconbox</span><span>,</span></div>
+						<div class="wil-mixin-box"><span class="wil-mixin-key">items</span><span>: </span><span class="wil-mixin-val">2</span></div>
+						<span>}</span>
+					</div>})
+				</div>
+			</div>
+
+
+
+		h6 2. Loop wrapper
+		
+		
+		+iconbox({
+			loop: {
+				data: dataLoop,
+				wrap: {
+					addClass: 'wrapper',
+					getKeyData: 'categories'
+				}
+			}
+		})
+
+		.
+			<div class="wil-styleguide-box">
+				<div class="wil-styleguide-box__body">
+					<span class="wil-mixin-copy" data-tooltip="Copy to clipboard">Copy</span>
+					<textarea class="wil-style-textarea">+iconbox({"breakline""tab"loop: {"breakline""tab""tab"data: dataLoop,"breakline""tab""tab"wrap: {"breakline""tab""tab""tab"addClass: 'wrapper',"breakline""tab""tab""tab"getKeyData: 'categories'"breakline""tab""tab"}"breakline""tab"}"breakline"})</textarea>
+
+					<span class="wil-mixin-name">+iconbox</span>
+					<span>({</span>
+					<div class="wil-mixin-box">
+						<span class="wil-mixin-key">loop</span><span>: {</span>
+						<div class="wil-mixin-box">
+							<span class="wil-mixin-key">data</span><span>: </span><span class="wil-mixin-val">dataIconbox</span><span>,</span>
+						</div>
+						
+						<div class="wil-mixin-box">
+							<span class="wil-mixin-key">wrap</span>
+							<span>: {</span>
+							<div class="wil-mixin-box">
+								<span class="wil-mixin-key">addClass</span><span>: </span><span class="wil-mixin-val">'wrapper'</span><span>,</span>
+							</div>
+							<div class="wil-mixin-box">
+								<span class="wil-mixin-key">getKeyData</span><span>: </span><span class="wil-mixin-val">'categories'</span><span>,</span>
+							</div>
+							<span>}</span>
+						</div>
+						<span>}</span>
+					</div>
+					})
+				</div>
+			</div>
