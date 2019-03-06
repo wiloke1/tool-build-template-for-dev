@@ -5,7 +5,7 @@ body {
 }
 
 .wil-main-core {
-    background-color: #fff;
+	background-color: #fff;
 }
 .wil-page-header {
 	font-size: 36px;
@@ -16,6 +16,18 @@ body {
     border-bottom: 1px solid #eee;
 }
 
+.wil-content-core,
+.wil-content-core h1,
+.wil-content-core h2,
+.wil-content-core h3,
+.wil-content-core h4,
+.wil-content-core h5,
+.wil-content-core h6 {
+	font-family: 'Montserrat', sans-serif !important;
+}
+.wil-content-core a {
+	text-decoration: none !important;
+}
 
 .wil-grid .grid-item__content-wrapper {
 	width: 100%;
@@ -320,6 +332,7 @@ pre.line-numbers::-webkit-scrollbar-thumb,
 
 .wil-menu-core ul li > .wil-menu-link-core {
 	font-size: 14px;
+	text-decoration: none;
 }
 .wil-menu-core ul li > .wil-menu-link-core span {
 	color: #d5d5d5;
@@ -890,6 +903,9 @@ pre.line-numbers,
 .wil-core-check-list label > span {
 	vertical-align: middle;
 	cursor: pointer;
+	font-size: 16px;
+	font-weight: 700;
+	text-transform: capitalize;
 }
 .wil-core-check-list input:checked ~ .wil-core-label-icon span {
 	opacity: 1;	
