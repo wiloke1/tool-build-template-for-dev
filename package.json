@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev node webpack.config/server"
+	"dev": "cross-env NODE_ENV=dev node webpack.config/server",
+	"start": "npm run dev"
   },
   "keywords": [],
   "author": "Long",
