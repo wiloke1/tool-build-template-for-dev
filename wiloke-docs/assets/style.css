@@ -41,7 +41,7 @@ body {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 480px;
+	width: 400px;
 	height: 100%;
 	padding-bottom: 100px;
 	z-index: 9999;
@@ -194,7 +194,7 @@ pre.line-numbers::-webkit-scrollbar-thumb,
 	position: fixed;
 	top: -100%;
 	right: 0;
-	left: 480px;
+	left: 400px;
 	height: 100vh;
 	background-color: #fff;
 	overflow-x: hidden;
@@ -227,7 +227,7 @@ pre.line-numbers::-webkit-scrollbar-thumb,
 
 .page-wrap {
 	position: relative !important;
-	padding-left: calc(480px + 40px) !important;
+	padding-left: calc(400px + 40px) !important;
 	padding-right: 0 !important;
 	background-color: #fff !important;
 	z-index: 99 !important;
