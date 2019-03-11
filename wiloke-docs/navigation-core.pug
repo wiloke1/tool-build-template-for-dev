@@ -1,4 +1,6 @@
 -
+	const os = require('os');
+	
 	var appConfig = require(__dirname.replace('webpack.config', '') + '/app.config.js');
 			
 	function containsAny(str, substrings) {
@@ -95,34 +97,33 @@ mixin print_menuCore(path, text, subtext, submenu, opts)
 				|
 				|endcheckload-->
 
-				div.wil-text-content-core--footer
+			div.wil-text-content-core--footer
 
-					form(action="/api/add-comment", method="get" onsubmit="wilCoreComment(event)")
-						|<!--checkload
-						|
-						div.wil-core-check-list
-							- var progressLabel = '{' + JSON.stringify(progress).match(/,.*/g).join('').match(/".*/g).join('')
-							- for ( var label in JSON.parse(progressLabel) )
-								label
-									if ( label == Object.keys(JSON.parse(progressLabel))[0] )
-										input(type="radio", name="checkwork" value=`["${label}", "${JSON.parse(progressLabel)[Object.keys(JSON.parse(progressLabel))[0]]}"]`, checked="checked")
-									else
-										input(type="radio", name="checkwork" value=`["${label}", "${JSON.parse(progressLabel)[label]}"]`)
-									div.wil-core-label-icon: span(style=`background-color:${JSON.parse(progressLabel)[label]}`)
-									span(style=`color:${JSON.parse(progressLabel)[label]}`)= label
+				form(class="CORE_formcomment")
+					|<!--checkload
+					|
+					div.wil-core-check-list
+						- var progressLabel = '{' + JSON.stringify(progress).match(/,.*/g).join('').match(/".*/g).join('')
+						- for ( var label in JSON.parse(progressLabel) )
+							label
+								if ( label == Object.keys(JSON.parse(progressLabel))[0] )
+									input(type="radio", name="checkwork", class=label, value=`["${label}", "${JSON.parse(progressLabel)[Object.keys(JSON.parse(progressLabel))[0]]}"]`, checked)
+								else
+									input(type="radio", name="checkwork", class=label, value=`["${label}", "${JSON.parse(progressLabel)[label]}"]`)
+								div.wil-core-label-icon: span(style=`background-color:${JSON.parse(progressLabel)[label]}`)
+								span(style=`color:${JSON.parse(progressLabel)[label]}`)= label
 
-						h3.wil-core-commenttitle Comments
-						input(type="text", placeholder="Name", name="author")
-						textarea(name="content", placeholder="Message")
-						button(type="submit") Comment
-						pre(style="margin: 20px 0 0"): code Link: [[http://google.com]]
-						pre(style="margin: 0"): code Emoji: XD, :D, :'(, :P, <3, :O, :(, 8), 8(, :*, :poop:, :3, (Y)
-						input(type="hidden", name="filename", value=encode(PATH.dirname(path).replace(/\\|\//g, '_-_-_').replace(new RegExp(appConfig.folders.path + '_-_-_' + appConfig.folders.core + '_-_-_', 'g'), '')))
-						|
-						|endcheckload-->
-						
-						img(class="initComment" data-filename=encode(PATH.dirname(path).replace(/\\|\//g, '_-_-_').replace(new RegExp(appConfig.folders.path + '_-_-_' + appConfig.folders.core + '_-_-_', 'g'), ''))  src="http://via.placeholder.com/1x1" data-url="/api/get-comment")
-						ul.wil-core-commentlist
+					h3.wil-core-commenttitle Comments
+					textarea(name="content", placeholder="Message")
+					button(type="submit") Comment
+					//- pre(style="margin: 20px 0 0"): code Link: [[http://google.com]]
+					//- pre(style="margin: 0"): code Emoji: XD, :D, :'(, :P, <3, :O, :(, 8), 8(, :*, :poop:, :3, (Y)
+					|
+					|endcheckload-->
+					
+					//- ul.wil-core-commentlist
+					div.CORE_commentlist(style="position: relative;")
+						//- .wil-core-loader(style="margin-top:30px;top:0")
 							
 			
 
@@ -194,7 +195,7 @@ mixin menuCore(classNav, opts)
 	|
 
 
-header.wil-header-core(data-progress=progress)
+header.wil-header-core(data-progress=progress, data-username=os.userInfo().username, data-activate=activate)
 	.wil-core-label
 		.wil-core-tb
 			- for (var item in progress)

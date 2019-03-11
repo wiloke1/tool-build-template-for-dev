@@ -20,8 +20,19 @@ block beforeLink
 			include assets/prism-themes/palenight.css
 		//- style
 		include assets/style.css
+	script(src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js")
+	script.
+		const config = {
+			apiKey: "AIzaSyD3wrYYhFE1fxW0w4i57ybDMl69_IxmLe4",
+			authDomain: "wiloke-template.firebaseapp.com",
+			databaseURL: "https://wiloke-template.firebaseio.com",
+			projectId: "wiloke-template",
+			storageBucket: "wiloke-template.appspot.com",
+			messagingSenderId: "753772169696"
+		};
 
 block beforePage
+	div#CORE_notification
 	div.app-check-responsive
 		div.app-check-responsive__full(data-device="100%")
 		div.app-check-responsive__1440(data-device="1440px")
