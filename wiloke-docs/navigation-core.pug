@@ -33,6 +33,9 @@
 	
 	var progress = appConfig.progress;
 
+	const dirActivateTemplate = appConfig.folders.path + '/' + appConfig.folders.content + '/' + activate;
+	const { slackAPI } = require(__dirname.replace('webpack.config', '') + "/" + dirActivateTemplate + "/config.js");
+
 
 
 
@@ -195,7 +198,7 @@ mixin menuCore(classNav, opts)
 	|
 
 
-header.wil-header-core(data-progress=progress, data-username=os.userInfo().username, data-activate=activate)
+header.wil-header-core(data-progress=progress, data-username=os.userInfo().username, data-activate=activate, data-slackapi=slackAPI)
 	.wil-core-label
 		.wil-core-tb
 			- for (var item in progress)
