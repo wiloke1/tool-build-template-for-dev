@@ -2,299 +2,299 @@
 	"c-primary": {
 		"body": "c-primary",
 		"prefix": "wiloke: c-primary { color: $color-primary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-c-primary": {
 		"body": "hover-c-primary",
 		"prefix": "wiloke: hover-c-primary:hover { color: $color-primary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"c-secondary": {
 		"body": "c-secondary",
 		"prefix": "wiloke: c-secondary { color: $color-secondary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-c-secondary": {
 		"body": "hover-c-secondary",
 		"prefix": "wiloke: hover-c-secondary:hover { color: $color-secondary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"c-tertiary": {
 		"body": "c-tertiary",
 		"prefix": "wiloke: c-tertiary { color: $color-tertiary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-c-tertiary": {
 		"body": "hover-c-tertiary",
 		"prefix": "wiloke: hover-c-tertiary:hover { color: $color-tertiary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"bg-primary": {
 		"body": "bg-primary",
 		"prefix": "wiloke: bg-primary { background-color: $color-primary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-bg-primary": {
 		"body": "hover-bg-primary",
 		"prefix": "wiloke: hover-bg-primary:hover { background-color: $color-primary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"bg-secondary": {
 		"body": "bg-secondary",
 		"prefix": "wiloke: bg-secondary { background-color: $color-secondary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-bg-secondary": {
 		"body": "hover-bg-secondary",
 		"prefix": "wiloke: hover-bg-secondary:hover { background-color: $color-secondary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"bg-tertiary": {
 		"body": "bg-tertiary",
 		"prefix": "wiloke: bg-tertiary { background-color: $color-tertiary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-bg-tertiary": {
 		"body": "hover-bg-tertiary",
 		"prefix": "wiloke: hover-bg-tertiary:hover { background-color: $color-tertiary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"b-primary": {
 		"body": "b-primary",
 		"prefix": "wiloke: b-primary { border-color: $color-primary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-b-primary": {
 		"body": "hover-b-primary",
 		"prefix": "wiloke: hover-b-primary:hover { border-color: $color-primary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"b-secondary": {
 		"body": "b-secondary",
 		"prefix": "wiloke: b-secondary { border-color: $color-secondary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-b-secondary": {
 		"body": "hover-b-secondary",
 		"prefix": "wiloke: hover-b-secondary:hover { border-color: $color-secondary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"b-tertiary": {
 		"body": "b-tertiary",
 		"prefix": "wiloke: b-tertiary { border-color: $color-tertiary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-b-tertiary": {
 		"body": "hover-b-tertiary",
 		"prefix": "wiloke: hover-b-tertiary:hover { border-color: $color-tertiary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"f-primary": {
 		"body": "f-primary",
 		"prefix": "wiloke: f-primary { font-family: $font-primary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"f-secondary": {
 		"body": "f-secondary",
 		"prefix": "wiloke: f-secondary { font-family: $font-secondary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"f-tertiary": {
 		"body": "f-tertiary",
 		"prefix": "wiloke: f-tertiary { font-family: $font-tertiary; }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"scale-0": {
 		"body": "scale-0",
 		"prefix": "wiloke: scale-0 { transform: scale(0); }",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"fs:font-size": {
 		"body": "fs${1|14,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30|}",
 		"prefix": "wiloke: fs:font-size",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-child-tX:translateX": {
 		"body": "hover-child-tX-${1|10,20,30,40,50,60,70,80,90,100,-10,-20,-30,-40,-50,-60,-70,-80,-90,-100|}",
 		"prefix": "wiloke: hover-child-tX:translateX",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-child-tY:translateY": {
 		"body": "hover-child-tY-${1|10,20,30,40,50,60,70,80,90,100,-10,-20,-30,-40,-50,-60,-70,-80,-90,-100|}",
 		"prefix": "wiloke: hover-child-tY:translateY",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-child-s-:scale": {
 		"body": "hover-child-s-${1|80-100,90-100,100-110,100-120,110-100,120-100|}",
 		"prefix": "wiloke: hover-child-s:scale",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-child-bg-:background-color": {
 		"body": "hover-child-bg-${1|primary,black|}",
 		"prefix": "wiloke: hover-child-bg:background-color",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"hover-child-c-:color": {
 		"body": "hover-child-c-${1|primary,black|}",
 		"prefix": "wiloke: hover-child-c:color",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"delay-:ms": {
 		"body": "delay-${1|10,20,30,40,50,60,70,80,90,100|}",
 		"prefix": "wiloke: delay-:ms",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"triangle-:variant": {
 		"body": "triangle-${1|up,right,down,left|}",
 		"prefix": "wiloke: triangle:variant",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 
 	"wil-section": {
 		"body": "wil-section",
 		"prefix": "wiloke: wil-section",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"wil-container": {
 		"body": "wil-container",
 		"prefix": "wiloke: wil-container",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"wil-row": {
 		"body": "wil-row",
 		"prefix": "wiloke: wil-row",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"wil-col-lg-:column": {
 		"body": "wil-col-lg-${1|1,2,3,4,5,6,7,8,9,10,11,12|}",
 		"prefix": "wiloke: wil-col-lg:column",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"wil-col-md-:column": {
 		"body": "wil-col-md-${1|1,2,3,4,5,6,7,8,9,10,11,12|}",
 		"prefix": "wiloke: wil-col-md:column",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"wil-col-sm-:column": {
 		"body": "wil-col-sm-${1|1,2,3,4,5,6,7,8,9,10,11,12|}",
 		"prefix": "wiloke: wil-col-sm:column",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 	"wil-col-xs-:column": {
 		"body": "wil-col-xs-${1|1,2,3,4,5,6,7,8,9,10,11,12|}",
 		"prefix": "wiloke: wil-col-xs:column",
-		"scope": ""
+		"scope": "javascriptreact,jade,html"
 	},
 
 	// random
 	"random.text": {
 		"body": "random(random.text, ${1:100})",
 		"prefix": "wiloke: random.text",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.title": {
 		"body": "random(random.title)",
 		"prefix": "wiloke: random.title",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.address": {
 		"body": "random(random.address)",
 		"prefix": "wiloke: random.address",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.work": {
 		"body": "random(random.work)",
 		"prefix": "wiloke: random.work",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.people.name": {
 		"body": "random(random.people.name)",
 		"prefix": "wiloke: random.people.name",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.people.avatar": {
 		"body": "random(random.people.avatar)",
 		"prefix": "wiloke: random.people.avatar",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.continental": {
 		"body": "random(random.continental)",
 		"prefix": "wiloke: random.continental",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.country": {
 		"body": "random(random.country)",
 		"prefix": "wiloke: random.country",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.font7": {
 		"body": "random(random.font7)",
 		"prefix": "wiloke: random.font7",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.fontawesome": {
 		"body": "random(random.fontawesome)",
 		"prefix": "wiloke: random.fontawesome",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.lineawesome": {
 		"body": "random(random.lineawesome)",
 		"prefix": "wiloke: random.lineawesome",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.social": {
 		"body": "random(random.social)",
 		"prefix": "wiloke: random.social",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.process.title": {
 		"body": "random(random.process.title)",
 		"prefix": "wiloke: random.process.title",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.process.title01": {
 		"body": "random(random.process.title01)",
 		"prefix": "wiloke: random.process.title01",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.post.title": {
 		"body": "random(random.post.${1|title,title01,title02|})",
 		"prefix": "wiloke: random.post.title",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.portfolio.title": {
 		"body": "random(random.portfolio.title)",
 		"prefix": "wiloke: random.portfolio.title",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.portfolio.categories": {
 		"body": "random(random.portfolio.categories)",
 		"prefix": "wiloke: random.portfolio.categories",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.listing.cat": {
 		"body": "random(random.listing.cat)",
 		"prefix": "wiloke: random.listing.cat",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.listing.tag": {
 		"body": "random(random.listing.tag)",
 		"prefix": "wiloke: random.listing.tag",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.product.name": {
 		"body": "random(random.product.name)",
 		"prefix": "wiloke: random.product.name",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.product.categories": {
 		"body": "random(random.product.categories)",
 		"prefix": "wiloke: random.product.categories",
-		"scope": ""
+		"scope": "jade,html"
 	},
 	"random.calendar.date": {
 		"body": "random(random.calendar.date)",
 		"prefix": "wiloke: random.calendar.date",
-		"scope": ""
+		"scope": "jade,html"
 	}
 }
